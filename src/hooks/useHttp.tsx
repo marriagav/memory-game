@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 interface useHttpProps {
   url: string;
-  dependencies: string[];
+  dependencies: (string | number)[];
 }
 
 export const useHttp = (props: useHttpProps) => {
@@ -11,11 +11,12 @@ export const useHttp = (props: useHttpProps) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const response = await fetch(props.url);
       const data = await response.json();
+      setIsLoading(false);
       setFetchedData(data);
     };
-    setIsLoading(true);
     console.log("Sending Http request to URL: " + props.url);
     try {
       fetchData();
@@ -24,5 +25,5 @@ export const useHttp = (props: useHttpProps) => {
     }
   }, props.dependencies);
 
-  return [isLoading, fetchedData];
+  return { isLoading, fetchedData };
 };
