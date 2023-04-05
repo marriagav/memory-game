@@ -27,6 +27,7 @@ function PokemonCard(props: PokemonCardProps) {
   if (!isLoading && loadedPokemon) {
     content = (
       <div className={props.className} key={props.cardId}>
+        <img src={loadedPokemon.sprite} alt={`${loadedPokemon?.name} image`} />
         <p>{loadedPokemon?.name}</p>
       </div>
     );
