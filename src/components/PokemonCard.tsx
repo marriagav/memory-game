@@ -1,5 +1,6 @@
 import React from "react";
 import { useHttp } from "../hooks/useHttp";
+import "./PokemonCard.css";
 
 interface PokemonCardProps {
   pokemonNumber: number;
@@ -28,7 +29,9 @@ function PokemonCard(props: PokemonCardProps) {
     content = (
       <div className={props.className} key={props.cardId}>
         <img src={loadedPokemon.sprite} alt={`${loadedPokemon?.name} image`} />
-        <p>{loadedPokemon?.name}</p>
+        <div className="bottom">
+          <p>{loadedPokemon?.name}</p>
+        </div>
       </div>
     );
   } else if (!isLoading && !loadedPokemon) {
