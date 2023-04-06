@@ -5,7 +5,8 @@ import "./PokemonCard.css";
 interface PokemonCardProps {
   pokemonNumber: number;
   className: string;
-  cardId: string;
+  pokemonId: string;
+  onClick: Function;
 }
 
 function PokemonCard(props: PokemonCardProps) {
@@ -19,15 +20,25 @@ function PokemonCard(props: PokemonCardProps) {
   if (fetchedData) {
     const fetchedPokemon = fetchedData as any;
     loadedPokemon = {
-      name: fetchedPokemon.name,
+      name:
+        fetchedPokemon.name.charAt(0).toUpperCase() +
+        fetchedPokemon.name.slice(1),
       sprite: fetchedPokemon.sprites.front_default,
     };
+  }
+
+  function clickCard(event: React.MouseEvent) {
+    props.onClick(props.pokemonId);
   }
 
   let content = <p>Loading Pokemon...</p>;
   if (!isLoading && loadedPokemon) {
     content = (
-      <div className={props.className} key={props.cardId}>
+      <div
+        className={props.className}
+        key={props.pokemonId}
+        onClick={clickCard}
+      >
         <img src={loadedPokemon.sprite} alt={`${loadedPokemon?.name} image`} />
         <div className="bottom">
           <p>{loadedPokemon?.name}</p>
