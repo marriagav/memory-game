@@ -20,8 +20,9 @@ main {
 
 .cardsContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+  width: 90%;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(1fr, 1fr));
   padding: 3%;
   gap: 15px;
 }
