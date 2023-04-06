@@ -46,22 +46,24 @@ function App() {
         <h1>Memory Game</h1>
       </header>
       <main>
-        {
-          <div className="scoresContainer">
-            <DisplayScore
-              className="scoreDisplay"
-              scoreName="Current Score"
-              scoreNumber={currentScore}
-              id="currentScore"
-            ></DisplayScore>
-            <DisplayScore
-              className="scoreDisplay"
-              scoreName="Best Score"
-              scoreNumber={highScore}
-              id="bestScore"
-            ></DisplayScore>
-          </div>
-        }
+        <div className="scoresContainer">
+          <DisplayScore
+            className="scoreDisplay"
+            scoreName="Current Score"
+            scoreNumber={currentScore}
+            id="currentScore"
+          ></DisplayScore>
+          <DisplayScore
+            className="scoreDisplay"
+            scoreName="Best Score"
+            scoreNumber={highScore}
+            id="bestScore"
+          ></DisplayScore>
+        </div>
+        <h3 className="instructions">
+          Click the maximum number of pokemon that you can, without repeating
+          any!
+        </h3>
         <div className="cardsContainer">{pokemonCards}</div>
       </main>
     </div>
