@@ -57,6 +57,17 @@ function App() {
           any!
         </h3>
         <div className="infoContainer">
+          <div className="slidecontainer">
+            <p id="sliderText">Number of Pokemon: {numberOfPokemon}</p>
+            <input
+              type="range"
+              className="slider"
+              min="1"
+              max="64"
+              value={numberOfPokemon}
+              onChange={changeNumberOfPokemon}
+            ></input>
+          </div>
           <div className="scoresContainer">
             <DisplayScore
               className="scoreDisplay"
@@ -70,17 +81,6 @@ function App() {
               scoreNumber={highScore}
               id="bestScore"
             ></DisplayScore>
-          </div>
-          <div className="slidecontainer">
-            <p id="sliderText">Number of Pokemon: {numberOfPokemon}</p>
-            <input
-              type="range"
-              className="slider"
-              min="1"
-              max="64"
-              value={numberOfPokemon}
-              onChange={changeNumberOfPokemon}
-            ></input>
           </div>
         </div>
         <div className="cardsContainer">{pokemonCards}</div>
