@@ -10,7 +10,13 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [listOfVisited, setListOfVisited] = useState<string[]>([]);
   const [pokemonCards, setPokemonCards] = useState<JSX.Element[]>([]);
-  const numberOfPokemon = 30;
+  const [numberOfPokemon, setNumberOfPokemon] = useState(30);
+
+  function changeNumberOfPokemon(test: any) {
+    console.log(test.target.value);
+    setNumberOfPokemon(test.target.value);
+    setCurrentScore(0);
+  }
 
   function addPokemonToList(pokemonId: string) {
     if (listOfVisited.includes(pokemonId)) {
@@ -38,7 +44,7 @@ function App() {
       );
     }
     setPokemonCards(pokemonCardsTemp.sort((a, b) => 0.5 - Math.random()));
-  }, [currentScore]);
+  }, [currentScore, numberOfPokemon]);
 
   return (
     <div className="App">
@@ -46,24 +52,37 @@ function App() {
         <h1>Memory Game</h1>
       </header>
       <main>
-        <div className="scoresContainer">
-          <DisplayScore
-            className="scoreDisplay"
-            scoreName="Current Score"
-            scoreNumber={currentScore}
-            id="currentScore"
-          ></DisplayScore>
-          <DisplayScore
-            className="scoreDisplay"
-            scoreName="Best Score"
-            scoreNumber={highScore}
-            id="bestScore"
-          ></DisplayScore>
-        </div>
         <h3 className="instructions">
           Click the maximum number of pokemon that you can, without repeating
           any!
         </h3>
+        <div className="infoContainer">
+          <div className="scoresContainer">
+            <DisplayScore
+              className="scoreDisplay"
+              scoreName="Current Score"
+              scoreNumber={currentScore}
+              id="currentScore"
+            ></DisplayScore>
+            <DisplayScore
+              className="scoreDisplay"
+              scoreName="Best Score"
+              scoreNumber={highScore}
+              id="bestScore"
+            ></DisplayScore>
+          </div>
+          <div className="slidecontainer">
+            <p id="sliderText">Number of Pokemon: {numberOfPokemon}</p>
+            <input
+              type="range"
+              className="slider"
+              min="1"
+              max="64"
+              value={numberOfPokemon}
+              onChange={changeNumberOfPokemon}
+            ></input>
+          </div>
+        </div>
         <div className="cardsContainer">{pokemonCards}</div>
       </main>
     </div>
