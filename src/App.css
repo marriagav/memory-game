@@ -28,13 +28,11 @@ main {
 }
 
 .scoresContainer {
-  /* width: 100; */
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 30px;
-  /* padding-top: 2%; */
 }
 
 .instructions {
@@ -102,8 +100,6 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  /* overflow: auto; */
-  /* flex-direction: ; */
   flex-wrap: wrap;
   gap: 30px;
 }

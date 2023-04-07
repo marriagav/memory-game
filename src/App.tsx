@@ -32,7 +32,6 @@ function App() {
   useEffect(() => {
     const pokemonCardsTemp: JSX.Element[] = [];
     for (let i = 1; i <= numberOfPokemon; i++) {
-      // const pokemonId: string = uuidv4();
       pokemonCardsTemp.push(
         <PokemonCard
           pokemonNumber={i}
@@ -63,7 +62,7 @@ function App() {
               type="range"
               className="slider"
               min="1"
-              max="64"
+              max="150"
               value={numberOfPokemon}
               onChange={changeNumberOfPokemon}
             ></input>
